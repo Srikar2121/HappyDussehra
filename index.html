@@ -1,0 +1,519 @@
+```html
+<!-- Sita Ram -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120604" />
+  <title>Happy Dussehra 🪔 | Vijayadashami</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #fff7df;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 166, 45, 0.16), transparent 28%),
+        radial-gradient(circle at 15% 80%, rgba(184, 65, 18, 0.16), transparent 30%),
+        linear-gradient(135deg, #080303, #1b0804 45%, #090303);
+    }
+
+    /* Ambient glow */
+    .glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow.one {
+      top: -180px;
+      left: -150px;
+      background: #ff9d00;
+    }
+
+    .glow.two {
+      right: -180px;
+      bottom: -150px;
+      background: #ff4d00;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+      background: linear-gradient(
+        to bottom,
+        rgba(8, 3, 3, 0.8),
+        transparent
+      );
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #ffd36a;
+    }
+
+    .nav-link {
+      color: #fff0c7;
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      opacity: 1;
+      color: #ffd36a;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      z-index: 2;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: heroIn 1.4s ease forwards;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid rgba(255, 205, 100, 0.35);
+      border-radius: 999px;
+      background: rgba(255, 190, 70, 0.07);
+      color: #ffd36a;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      background: linear-gradient(
+        135deg,
+        #fff5c7,
+        #ffd05a,
+        #ff9d22,
+        #fff0b0
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 50px rgba(255, 165, 30, 0.16);
+    }
+
+    .sanskrit {
+      margin-top: 28px;
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+      color: #ffe3a0;
+      letter-spacing: 5px;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: rgba(255, 245, 215, 0.72);
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      margin-top: 38px;
+      padding: 15px 27px;
+      border-radius: 999px;
+      color: #2b1002;
+      background: linear-gradient(135deg, #fff0a8, #ffb52e);
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      box-shadow: 0 0 35px rgba(255, 177, 42, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 50px rgba(255, 177, 42, 0.4);
+    }
+
+    /* Diya */
+    .diya {
+      position: relative;
+      width: 150px;
+      height: 70px;
+      margin: 80px auto 0;
+    }
+
+    .bowl {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 150px;
+      height: 55px;
+      transform: translateX(-50%);
+      background: linear-gradient(#e08b27, #8e350e);
+      border-radius: 0 0 80px 80px;
+      box-shadow:
+        0 10px 30px rgba(255, 120, 20, 0.35),
+        inset 0 5px 10px rgba(255, 221, 133, 0.3);
+    }
+
+    .flame {
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      width: 28px;
+      height: 55px;
+      transform: translateX(-50%);
+      background: linear-gradient(#fff9b0, #ffb21f 55%, #ef5310);
+      border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+      filter: drop-shadow(0 0 20px #ff9d00);
+      animation: flame 1.2s ease-in-out infinite alternate;
+    }
+
+    .flame::after {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 25px;
+      background: #fffbe0;
+      border-radius: 50%;
+      left: 50%;
+      top: 15px;
+      transform: translateX(-50%);
+    }
+
+    /* Particles */
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #ffd36a;
+      opacity: 0.6;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+      z-index: 1;
+    }
+
+    /* Celebration section */
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 110px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #ffd36a;
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      color: rgba(255, 245, 215, 0.7);
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    .cards {
+      max-width: 1050px;
+      margin: 60px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 35px 25px;
+      border: 1px solid rgba(255, 210, 110, 0.12);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(18px);
+      text-align: center;
+      transition: transform 0.35s, border-color 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 210, 110, 0.35);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      color: #ffe5a2;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: rgba(255, 245, 215, 0.62);
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+
+    /* Final message */
+    .final {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .final-box {
+      max-width: 800px;
+      padding: 70px 30px;
+      border-radius: 35px;
+      border: 1px solid rgba(255, 210, 110, 0.15);
+      background:
+        radial-gradient(circle at center, rgba(255, 168, 40, 0.1), transparent 60%),
+        rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(20px);
+    }
+
+    .final-box h2 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      color: #ffe4a0;
+      margin-bottom: 20px;
+    }
+
+    .final-box p {
+      color: rgba(255, 245, 215, 0.7);
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: rgba(255, 230, 170, 0.45);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    /* Animations */
+    @keyframes flame {
+      from {
+        transform: translateX(-50%) scale(0.9) rotate(-3deg);
+      }
+      to {
+        transform: translateX(-50%) scale(1.08) rotate(3deg);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) scale(0.5);
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+      }
+    }
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        padding: 18px 5%;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <nav>
+    <div class="brand">🪔 VIJAYADASHAMI</div>
+    <a href="#meaning" class="nav-link">The Celebration ↓</a>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="eyebrow">A Celebration of Light</div>
+
+        <h1>Happy<br>Dussehra</h1>
+
+        <div class="sanskrit">
+          शुभ विजयादशमी
+        </div>
+
+        <p class="subtitle">
+          May this Vijayadashami bring light to every path,
+          courage to every heart, and hope for every new beginning.
+        </p>
+
+        <a href="#meaning" class="cta">
+          Begin the Celebration ↓
+        </a>
+
+        <div class="diya">
+          <div class="flame"></div>
+          <div class="bowl"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="meaning">
+
+      <h2 class="section-title">The Spirit of Dussehra</h2>
+
+      <p class="section-text">
+        Dussehra, also known as Vijayadashami, is a celebration
+        associated with the triumph of good over evil and the
+        beginning of a brighter chapter.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">🪔</div>
+          <h3>Light</h3>
+          <p>
+            Let every small light remind us that hope can brighten
+            even the darkest moments.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌸</div>
+          <h3>Peace</h3>
+          <p>
+            Celebrate with kindness, gratitude, and respect for
+            the people around us.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">✨</div>
+          <h3>New Beginnings</h3>
+          <p>
+            Every ending can open the door to something new,
+            meaningful, and full of possibility.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="final">
+
+      <div class="final-box">
+        <h2>शुभ विजयादशमी 🪔</h2>
+
+        <p>
+          May your days be filled with light,
+          your journey with courage,
+          and your future with endless possibilities.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Made with 🪔 &nbsp;•&nbsp; Happy Dussehra
+  </footer>
+
+  <script>
+    // Create ambient golden particles
+    const particleCount = 45;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.animationDuration =
+        7 + Math.random() * 10 + "s";
+      particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+      const size = 1 + Math.random() * 3;
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+
+      document.body.appendChild(particle);
+    }
+  </script>
+
+</body>
+</html>
+```
